@@ -42,14 +42,12 @@ const scrapeLogic = async (res) => {
 
       // Print the full title
       console.log('The title of this blog post is "%s".', fullTitle);
-
       res.status(200).send(`The title of this blog post is ${fullTitle}`);
-      await browser.close();
+      break;
     } catch (e) {
       console.error(e);
       res.send(`Something went wrong while running Puppeteer: ${e}. Retrying`);
     } 
-
     retries++;
   }
   await browser.close();
