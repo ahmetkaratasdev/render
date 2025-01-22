@@ -1,4 +1,4 @@
-FROM ghcr.io/puppeteer/puppeteer:24.1.0
+FROM ghcr.io/puppeteer/puppeteer:19.7.2
 
 # Skip chromium download
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
