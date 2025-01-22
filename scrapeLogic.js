@@ -43,18 +43,12 @@ const scrapeLogic = async (res) => {
     // Print the full title
     console.log('The title of this blog post is "%s".', fullTitle);
 
-    await delay(500);
-    await page.screenshot({
-        path: 'screenshots/success.png',
-        fullPage: true
-    });
     res.status(200).send(`The title of this blog post is ${fullTitle}`);
     await browser.close();
 
     
   } catch (e) {
     console.error(e);
-    delay(500);
     res.send(`Something went wrong while running Puppeteer: ${e}`);
   } finally {
     await browser.close();
