@@ -17,7 +17,8 @@ const scrapeLogic = async (res) => {
   try {
     const page = await browser.newPage();
 
-    await page.goto('https://developer.chrome.com/');
+    // Navigate to the page
+    await page.goto('https://developer.chrome.com/', { waitUntil: 'networkidle0' });
 
     // Set screen size
     await page.setViewport({width: 1080, height: 1024});
@@ -30,6 +31,9 @@ const scrapeLogic = async (res) => {
     await page.waitForSelector(searchResultSelector);
     await page.click(searchResultSelector);
 
+    await page.waitForSelector('h1'); // Example: Wait for the title of the new page
+
+
     // Locate the full title with a unique string
     const textSelector = await page.waitForSelector(
     'text/Customize and automate'
@@ -38,12 +42,19 @@ const scrapeLogic = async (res) => {
 
     // Print the full title
     console.log('The title of this blog post is "%s".', fullTitle);
+
+    await delay(500);
+    await page.screenshot({
+        path: 'screenshots/success.png',
+        fullPage: true
+    });
     res.status(200).send(`The title of this blog post is ${fullTitle}`);
     await browser.close();
 
     
   } catch (e) {
     console.error(e);
+    delay(500);
     res.send(`Something went wrong while running Puppeteer: ${e}`);
   } finally {
     await browser.close();
