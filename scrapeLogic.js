@@ -19,8 +19,7 @@ const scrapeLogic = async (res) => {
         await page.goto('https://developers.google.com/web/');
 
         // Type into search box.
-        await page.locator('.devsite-search-field').fill('Headless Chrome');
-        //   await page.type('.devsite-search-field', 'Headless Chrome');
+        await page.type('.devsite-search-field', 'Headless Chrome');
 
         // Wait for suggest overlay to appear and click "show all results".
         const allResultsSelector = '.devsite-suggest-all-results';
