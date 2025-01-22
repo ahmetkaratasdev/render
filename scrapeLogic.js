@@ -40,6 +40,7 @@ const scrapeLogic = async (res) => {
             });
         }, resultsSelector);
         console.log(links.join('\n'));
+        res.send("Working all fine");
     } catch (e) {
         console.error(e);
         res.send(`Something went wrong while running puppeteer ${e}`);
