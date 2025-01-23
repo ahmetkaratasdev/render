@@ -49,6 +49,7 @@ const scrapeLogic = async (res) => {
       await page.evaluate(() => {
         console.log("Looking for link with text");
       });
+
       // Locate the full title with a unique string
       const textSelector = await page.waitForSelector(
       'text/Customize and automate'
@@ -56,7 +57,6 @@ const scrapeLogic = async (res) => {
       const fullTitle = await textSelector.evaluate(el => el.textContent);
 
 
-      res.status(200).send(`Working so far?`);
       // Print the full title
       console.log('The title of this blog post is "%s".', fullTitle);
       res.status(200).send(`The title of this blog post is ${fullTitle}`);
