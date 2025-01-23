@@ -63,10 +63,14 @@ const scrapeLogic = async (res) => {
       break;
     } catch (e) {
       console.error(e);
-      res.send(`Something went wrong while running Puppeteer: ${e}. Retrying`);
+      console.log(`Something went wrong while running Puppeteer: ${e}. Retrying`);
+      if (retries === 1) {
+        res.send(`Something went wrong while running Puppeteer: ${e}. Retrying`);
+      }
     } 
     retries++;
   }
+
   await browser.close();
 };
 
