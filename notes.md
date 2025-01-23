@@ -4,3 +4,8 @@
 
 - spins down after 15 mins of activity
 - can use websites for work arounds.
+
+
+# Error Handling
+- Take screenshots to see errors better
+    - Doesn't work, need a whole new system. 
